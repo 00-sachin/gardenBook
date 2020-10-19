@@ -1,0 +1,36 @@
+
+.submitButton, .navbar{
+	color: blueviolet !important;
+	background-color: rgb(14, 13, 13) !important;
+}
+.brand-logo{
+	color: blueviolet !important;
+}
+.navLink {
+	color: blueviolet !important;
+}
+.mainContainer.navbar.navLink a.active {
+	color: darkgoldenrod !important;
+}
+TextInput {
+	margin: 10px
+}
+#mobile-nav {
+	padding: 50px;
+}
+.in {
+	color: brown !important;
+}
+.loginBlock, .postBlock, .profileBlock {
+	width:50%;
+	margin:auto;
+	text-align: center;
+}
+
+@media only screen and (max-width: 450px) {
+	.loginBlock, .postBlock {
+		width: 80%;
+		margin:auto;
+	}
+}
+
