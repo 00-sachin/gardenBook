@@ -19,11 +19,11 @@ const Login = (props) => {
 	let passRef = useRef(null);
 
 	const fetchUsername = async () => {
-		var firstResponse = await fetch('http://localhost:3001/login?email='+credentials.email+'&password='+credentials.password);
+		var firstResponse = await fetch('http://localhost:3001/auth/login?email='+credentials.email+'&password='+credentials.password);
 		var jsonResponse = await firstResponse.json();
 		console.log('hello', jsonResponse); 
-		validationResult = jsonResponse.username;
-		changeDisplay();
+		validationResult = jsonResponse.token;
+		changeDisplay(jsonResponse);
 	}
 	useEffect(() => {
 		//console.log(validationResult);
@@ -34,18 +34,19 @@ const Login = (props) => {
 	const catchInput = async (e) => 
 	{
 		setValidationResult('sent');
-		//console.log(validationResult);
+		//console.log(validationResult);	
 		setCredentials({
 		email: emailRef.current.value,
 		password: passRef.current.value
 		});	
 	}
-	const changeDisplay = () => {
+	const changeDisplay = (jsonResponse) => {
 		if (validationResult === undefined) {
 			setOutput('invalid credentials');
 		} else {
-			//console.log(validationResult);
-			props.setUsername(validationResult);
+			console.log(validationResult);
+			props.setToken(validationResult);
+			props.setUsername(jsonResponse.email)
 			setOutput('login successful!');
 			setToPosts('/');
 		};

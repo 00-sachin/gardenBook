@@ -13,15 +13,15 @@ import { Posts } from './pages/Home';
 import Contact from './pages/Contact'; 
 import About from './pages/About';
 import {Profile} from './pages/Profile';
-import { UserContext, userDataContext } from './contexts/UserContext';
+import { UserContext, TokenContext } from './contexts/UserContext';
 
 function App() {
   let [username, setUsername] = useState(undefined);
-  let [ postData, setPostData ] = useState(undefined);
+  let [ Token, setToken ] = useState(undefined);
   return (
     <BrowserRouter>
       <UserContext.Provider value={username}>
-        <userDataContext.Provider value={postData}>
+        <TokenContext.Provider value={Token}>
         <div className = "mainContainer">
             <Navbar
                 className="navbar"
@@ -49,7 +49,7 @@ function App() {
             <div className = "app-container">
               <Switch>
                 <Route path = "/" exact>
-                    <Posts setUsername={setUsername} setPostData={setPostData} />
+                    <Posts setUsername={setUsername} />
                 </Route>
                 <Route path = "/contact" exact>
                     <Contact />
@@ -61,12 +61,12 @@ function App() {
                     <About />
                 </Route>
                 <Route path = "/login" exact>
-                    <Login setUsername={setUsername} />
+                    <Login setUsername={setUsername} setToken={setToken}/>
                 </Route>
               </Switch>
             </div>
         </div>
-        </userDataContext.Provider> 
+        </TokenContext.Provider> 
       </UserContext.Provider>
     </BrowserRouter>
   );
