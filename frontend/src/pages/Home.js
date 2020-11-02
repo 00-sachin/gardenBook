@@ -6,13 +6,14 @@ import { TokenContext, UserContext } from '../contexts/UserContext';
 
 import '../App.css';
 import '../css/post.css';
+import {Like} from '../components/likeComment';
 
 export const Posts = (props) => {
 	let [username, setUsername] = useState(useContext(UserContext));
 	let [fetchedPosts, setFetchedPosts] = useState('take');
 	let newPostRef = useRef(null);
-	let [token,setToken] = useState(useContext(TokenContext));
-	
+	let [token, setToken] = useState(useContext(TokenContext));
+
 	const fetchPosts = async () => {
 		var firstResponse = await fetch('http://localhost:3001/post/relevantPosts?username='+username,{
 			headers: {authorization: "Bearer "+token}
@@ -31,10 +32,6 @@ export const Posts = (props) => {
 
 	};
 
-	var likeClicked = (id,e) => {
-		console.log(id);
-		
-	};
 
 	var commentClicked = () => {};
 
@@ -56,13 +53,15 @@ export const Posts = (props) => {
 						return (
 							<div className='singlePost' >
 								<h3>{item.postBody}</h3>
-								{/* <p>{}</p> */}
+								<img src = {item.postImageUrl}></img>
 								<div className="likeCommentBlock">
-									<div>{item.likes.length} 
-										<Button flat node="button" key={item.postId} onClick={(e)=>likeClicked(item.postId, e)} >
-											<Icon center small>thumb_up</Icon>
-										</Button>
-									</div>
+
+									<Like 
+										key={item.postId} 
+										postId={item.postId}
+										likesCount= {item.likes.length} 
+									/>
+
 									<div>{item.comments.length}
 										<Button flat node="button" onClick={commentClicked}>
 											<Icon center small>comment</Icon>
@@ -78,9 +77,11 @@ export const Posts = (props) => {
 							)
 						})
 					})
-			}
+				}
+			</div>
 		</div>
-	</div>
-	)
-	}}
+		)
+		}}
+
+
 	
