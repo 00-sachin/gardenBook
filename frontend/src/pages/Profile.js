@@ -27,8 +27,8 @@ export const Profile = (props) => {
         return (
             <div className='profileBlock'>
                 <h2>{username}</h2>
-                <div>Followers {profileData.followers}</div>
-                <div>Following {profileData.following}</div>
+                <div>Followers: {profileData.followers}</div>
+                <div>Following: {profileData.following}</div>
                 <div>
                 {profileData.posts.map(item => {
                     return <div>{item}</div>
