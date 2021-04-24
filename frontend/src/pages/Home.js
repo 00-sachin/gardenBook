@@ -52,7 +52,7 @@ export const Posts = (props) => {
 					return singleFollowing.posts.map((item, index) => {
 						return (
 							<div className='singlePost' >
-								<h3>{item.postBody}</h3>
+								<h3>- {item.postBody}</h3>
 								<img src = {item.postImageUrl}></img>
 								<div className="likeCommentBlock">
 
