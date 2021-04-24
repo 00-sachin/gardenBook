@@ -44,7 +44,7 @@ router.get('/login', (req, res) => {
                 email: result.email
             });
         }
-    }).catch(err => err)
+    }).catch(err => console.log(err))
 })
 
 router.get('/protected', authCheck,(req, res) => {
