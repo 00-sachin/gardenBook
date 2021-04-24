@@ -65,6 +65,7 @@ router.get('/like', authCheck, (req, res) => {
             } )
             res.send({status:true})
         }
+        
         else {
             likedArray.push(liker);
             console.log(likedArray);
