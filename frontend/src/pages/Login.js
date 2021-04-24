@@ -60,7 +60,7 @@ const Login = (props) => {
 			<TextInput className="in" ref={passRef} password id="TextInput-4" label="Password" />
 
 			<Button className="submitButton"  node="button" type="submit" waves="light" onClick={catchInput}>
-				Submit
+				Login
 			<Icon right>
 					send
 			</Icon>
