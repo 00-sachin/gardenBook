@@ -54,7 +54,7 @@ const Login = (props) => {
 
 	return (
 		<div className="loginBlock">
-			<h1>Login</h1>
+			<h1>Login to GardenBook</h1>
 			<TextInput className="in" ref={emailRef} email id="TextInput-3" label="Email" validate />
 
 			<TextInput className="in" ref={passRef} password id="TextInput-4" label="Password" />
